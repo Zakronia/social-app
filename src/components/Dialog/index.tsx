@@ -15,7 +15,7 @@ import {
   useKeyboardHandler,
 } from 'react-native-keyboard-controller'
 import {runOnJS} from 'react-native-reanimated'
-import {ReanimatedScrollEvent} from 'react-native-reanimated/lib/typescript/reanimated2/hook/commonTypes'
+import {ReanimatedScrollEvent} from 'react-native-reanimated/lib/typescript/hook/commonTypes'
 import {useSafeAreaInsets} from 'react-native-safe-area-context'
 import {msg} from '@lingui/macro'
 import {useLingui} from '@lingui/react'
@@ -267,7 +267,10 @@ export const ScrollableInner = React.forwardRef<ScrollView, DialogInnerProps>(
 
 export const InnerFlatList = React.forwardRef<
   ListMethods,
-  ListProps<any> & {webInnerStyle?: StyleProp<ViewStyle>}
+  ListProps<any> & {
+    webInnerStyle?: StyleProp<ViewStyle>
+    webInnerContentContainerStyle?: StyleProp<ViewStyle>
+  }
 >(function InnerFlatList({style, ...props}, ref) {
   const insets = useSafeAreaInsets()
   const {nativeSnapPoint, disableDrag, setDisableDrag} = useDialogContext()
